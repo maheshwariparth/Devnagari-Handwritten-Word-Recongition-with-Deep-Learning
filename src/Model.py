@@ -146,20 +146,20 @@ class Model:
     sess=tf.Session() # TF session
 
     saver = tf.train.Saver(max_to_keep=1) # saver saves model to file
-    modelDir = '../model/'
-    latestSnapshot = tf.train.latest_checkpoint(modelDir) # is there a saved model?
+    # modelDir = '../model/'
+    # latestSnapshot = tf.train.latest_checkpoint(modelDir) # is there a saved model?
 
-    # if model must be restored (for inference), there must be a snapshot
-    if self.mustRestore and not latestSnapshot:
-      raise Exception('No saved model found in: ' + modelDir)
+    # # if model must be restored (for inference), there must be a snapshot
+    # if self.mustRestore and not latestSnapshot:
+    #   raise Exception('No saved model found in: ' + modelDir)
 
-    # load saved model if available
-    if latestSnapshot:
-      print('Init with stored values from ' + latestSnapshot)
-      saver.restore(sess, latestSnapshot)
-    else:
-      print('Init with new values')
-      sess.run(tf.global_variables_initializer())
+    # # load saved model if available
+    # if latestSnapshot:
+    #   print('Init with stored values from ' + latestSnapshot)
+    #   saver.restore(sess, latestSnapshot)
+    # else:
+    #   print('Init with new values')
+    sess.run(tf.global_variables_initializer())
 
     return (sess,saver)
 
