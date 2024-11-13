@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 from __future__ import print_function
+from pickle import FALSE
 
 import sys
 import argparse
@@ -149,7 +150,7 @@ def main():
 
         # execute training or validation
         if args.train:
-            model = Model(loader.charList, decoderType)
+            model = Model(loader.charList, decoderType, mustRestore=False)
             train(model, loader)
         elif args.validate:
             model = Model(loader.charList, decoderType, mustRestore=False)
