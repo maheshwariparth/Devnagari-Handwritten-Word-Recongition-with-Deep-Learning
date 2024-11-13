@@ -49,12 +49,12 @@ class DataLoader:
 			if not line or line[0]=='#':
 				continue
 			
-			lineSplit = line.strip().split(' ')
+			lineSplit = line.split(' ')
 
 			if lineSplit[0] == '\ufeff':  # since reading first line give '\ufeff'
 				continue
 
-			fileName = filePath + lineSplit[0]
+			fileName = os.path.join(filePath,lineSplit[0])
 
 			# GT text are columns starting at 1
 			gtText = self.truncateLabel(' '.join(lineSplit[1]), maxTextLen)
